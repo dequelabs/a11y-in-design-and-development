@@ -3,14 +3,17 @@ import { getData, setData, getStats } from '../utils'
 import AppComponent from '../components/App'
 
 const CAULDRON_DARK_THEME_CLASS = 'cauldron--theme-dark'
+const THEME_STORAGE_KEY = 'THEME_STORAGE_KEY'
 
 const App = () => {
+  const cachedDarkTheme = localStorage.getItem(THEME_STORAGE_KEY) === 'dark'
   const [recipes, setRecipes] = React.useState(getData())
   const [stats, setStats] = React.useState(getStats(recipes))
   const [themeModalActive, setThemeModalActive] = React.useState(false)
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false)
-  const [currentThemeSelection, setCurrentThemeSelection] =
-    React.useState('light')
+  const [isDarkTheme, setIsDarkTheme] = React.useState(cachedDarkTheme)
+  const [currentThemeSelection, setCurrentThemeSelection] = React.useState(
+    cachedDarkTheme ? 'dark' : 'light'
+  )
   const [currentEditModal, setCurrentEditModal] = React.useState(null)
   const [currentViewModal, setCurrentViewModal] = React.useState(null)
 
@@ -32,17 +35,17 @@ const App = () => {
 
   const onThemeSwitchClick = () => {
     console.log('theme trigger clicked')
-    setThemeModalActive(true)
+    setThemeModalActive(!themeModalActive)
   }
   const onThemeModalClose = () => {
     console.log('close called')
-    setThemeModalActive(false)
+    setThemeModalActive(!themeModalActive)
   }
   const onThemeModalSubmit = (e) => {
     e.preventDefault()
-    console.log('yo!', currentThemeSelection)
     setIsDarkTheme(currentThemeSelection === 'dark')
     onThemeModalClose()
+    localStorage.setItem(THEME_STORAGE_KEY, currentThemeSelection)
   }
   const onThemeChange = (radio) => setCurrentThemeSelection(radio.value)
 

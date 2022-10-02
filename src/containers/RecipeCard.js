@@ -26,11 +26,17 @@ const RecipeCard = ({
    */
   const onIngredientAdd = () => setIngredients([...ingredients, ''])
   const onInstructionAdd = () => setInstructions([...instructions, ''])
+  const onIngredientDelete = (index) =>
+    setIngredients([...ingredients].filter((_, idx) => idx !== index))
+  const onInstructionDelete = (index) =>
+    setInstructions([...ingredients].filter((_, idx) => idx !== index))
   const onEditRecipeModalClose = () => setCurrentEditModal(null)
-  const onEditRecipeModalSubmit = () =>
-    updateRecipe(index, {
-      todo: true,
-    })
+  const onEditRecipeModalSubmit = (e) => {
+    e.preventDefault()
+    // updateRecipe(index, {
+    //   todo: true,
+    // })
+  }
 
   /**
    * Cook Recipe
@@ -70,12 +76,17 @@ const RecipeCard = ({
         setCurrentViewModal={setCurrentViewModal}
       />
       <EditRecipeModal
+        recipe={recipe}
+        instructions={instructions}
+        ingredients={ingredients}
         show={currentEditModal === recipe.name}
         heading={`Edit ${recipe.name}`}
         onClose={onEditRecipeModalClose}
         onIngredientAdd={onIngredientAdd}
         onInstructionAdd={onInstructionAdd}
         onSubmit={onEditRecipeModalSubmit}
+        onIngredientDelete={onIngredientDelete}
+        onInstructionDelete={onInstructionDelete}
       />
       <CookRecipeModal
         recipe={recipe}

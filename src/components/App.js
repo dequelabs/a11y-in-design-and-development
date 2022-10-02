@@ -8,12 +8,10 @@ import {
   MenuBar,
   TopBarItem,
   Icon,
-  Modal,
-  ModalContent,
-  ModalFooter,
   Button,
   RadioGroup,
 } from '@deque/cauldron-react'
+import Modal, { ModalContent, ModalFooter } from './Modal'
 import logo from '../img/icons/logo.svg'
 import Stats from './Stats'
 import RecipeCard from '../containers/RecipeCard'
@@ -75,41 +73,39 @@ const App = ({
           />
         ))}
       </div>
-      <Modal
-        show={themeModalActive}
-        onClose={onThemeModalClose}
-        heading="Set Theme"
-      >
-        <form noValidate onSubmit={onThemeModalSubmit}>
-          <ModalContent>
-            <h2 id="theme-group-label">Theme</h2>
-            <RadioGroup
-              aria-labelledby="theme-group-label"
-              onChange={onThemeChange}
-              value={currentThemeSelection}
-              name="theme"
-              radios={[
-                {
-                  id: 'light',
-                  label: 'Light',
-                  value: 'light',
-                },
-                {
-                  id: 'dark',
-                  label: 'Dark',
-                  value: 'dark',
-                },
-              ]}
-            />
-          </ModalContent>
-          <ModalFooter>
-            <Button type="submit">Submit</Button>
-            <Button variant="secondary" onClick={onThemeModalClose}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </form>
-      </Modal>
+      {themeModalActive && (
+        <Modal show onClose={onThemeModalClose} heading="Set Theme">
+          <form noValidate onSubmit={onThemeModalSubmit}>
+            <ModalContent>
+              <h2 id="theme-group-label">Theme</h2>
+              <RadioGroup
+                aria-labelledby="theme-group-label"
+                onChange={onThemeChange}
+                value={currentThemeSelection}
+                name="theme"
+                radios={[
+                  {
+                    id: 'light',
+                    label: 'Light',
+                    value: 'light',
+                  },
+                  {
+                    id: 'dark',
+                    label: 'Dark',
+                    value: 'dark',
+                  },
+                ]}
+              />
+            </ModalContent>
+            <ModalFooter>
+              <Button type="submit">Submit</Button>
+              <Button variant="secondary" onClick={onThemeModalClose}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </form>
+        </Modal>
+      )}
     </Layout>
   </div>
 )
