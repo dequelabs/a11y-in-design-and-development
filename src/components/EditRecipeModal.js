@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, IconButton, TextField } from '@deque/cauldron-react'
-import Modal, { ModalContent, ModalFooter } from './Modal'
+import {
+  Button,
+  IconButton,
+  TextField,
+  Modal,
+  ModalContent,
+  ModalFooter,
+} from '@deque/cauldron-react'
 
 const EditRecipeModal = ({
   show,
