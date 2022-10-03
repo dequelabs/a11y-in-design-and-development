@@ -68,7 +68,7 @@ const RecipeCard = ({
       .map((field) => {
         const value = field.input.value
 
-        if (!value) {
+        if (!value || !value.trim()) {
           hasError = true
           newInstructionErrors[index] = true
         }

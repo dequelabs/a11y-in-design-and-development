@@ -32,7 +32,6 @@ const EditRecipeModal = ({
             {ingredients.map((ingredient, index) => (
               <div className="RecipeModalItem" key={`${ingredient}-${index}`}>
                 <TextField
-                  required
                   label="Ingredient"
                   defaultValue={ingredient}
                   error={ingredientErrors[index] ? 'Field required' : null}
@@ -61,7 +60,6 @@ const EditRecipeModal = ({
             {instructions.map((instruction, index) => (
               <div className="RecipeModalItem" key={`${instruction}-${index}`}>
                 <TextField
-                  required
                   multiline
                   label="Instruction"
                   defaultValue={instruction}

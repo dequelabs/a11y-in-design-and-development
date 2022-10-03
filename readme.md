@@ -111,9 +111,8 @@ Keep up the good work! We've found quite a few accessibility issues.
 
 #### Forms Issues
 
-- Group the related fields in the edit recipe modal (`role="group"`)
-- Give the `role="group"` element the expected group label (`aria-labelledby="ingredients-heading"` and `aria-labelledby="instructions-heading"`)
-- Mark the "Rate the yumminess (0 - 50)" field as required (via [cauldron `<TexField />`](https://cauldron.dequelabs.com/components/TextField) component's `required` prop)
+- Mark the edit recipe modal fields as well as the "Rate the yumminess (0 - 50)" field in the cook modal form as required (via [cauldron `<TexField />`](https://cauldron.dequelabs.com/components/TextField) component's `required` prop)
+- Give the edit recipe modal fields the expected descriptive labels (refer to wireframes!)
 - Make the form error message more descriptive so users understand how to fix the error.
   - `src/components/CookRecipeModal.js`
   - `src/components/EditRecipeModal.js`
