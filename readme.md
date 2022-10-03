@@ -13,13 +13,13 @@ https://smashingconf.com/online-workshops/workshops/deque-accessibility
 $ npm install
 ```
 
-## Start
+## Starting local server
 
 ```sh
 $ npm start
 ```
 
-## Let's get started!!
+## Let's get started!
 
 ### Review application
 
