@@ -57,55 +57,55 @@ const App = ({
         <h1 id="main-heading">
           Recipe Dashboard <span>(with intentional a11y issues)</span>
         </h1>
+        <Stats stats={stats} />
+        <div className="Recipes">
+          {recipes.map((recipe, index) => (
+            <RecipeCard
+              key={recipe.name}
+              recipe={recipe}
+              index={index}
+              setCurrentEditModal={setCurrentEditModal}
+              setCurrentViewModal={setCurrentViewModal}
+              updateRecipe={updateRecipe}
+              currentEditModal={currentEditModal}
+              currentViewModal={currentViewModal}
+            />
+          ))}
+        </div>
+        {themeModalActive && (
+          <Modal show onClose={onThemeModalClose} heading="Set Theme">
+            <form noValidate onSubmit={onThemeModalSubmit}>
+              <ModalContent>
+                <h2 id="theme-group-label">Theme</h2>
+                <RadioGroup
+                  aria-labelledby="theme-group-label"
+                  onChange={onThemeChange}
+                  value={currentThemeSelection}
+                  name="theme"
+                  radios={[
+                    {
+                      id: 'light',
+                      label: 'Light',
+                      value: 'light',
+                    },
+                    {
+                      id: 'dark',
+                      label: 'Dark',
+                      value: 'dark',
+                    },
+                  ]}
+                />
+              </ModalContent>
+              <ModalFooter>
+                <Button type="submit">Submit</Button>
+                <Button variant="secondary" onClick={onThemeModalClose}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </form>
+          </Modal>
+        )}
       </Main>
-      <Stats stats={stats} />
-      <div className="Recipes">
-        {recipes.map((recipe, index) => (
-          <RecipeCard
-            key={recipe.name}
-            recipe={recipe}
-            index={index}
-            setCurrentEditModal={setCurrentEditModal}
-            setCurrentViewModal={setCurrentViewModal}
-            updateRecipe={updateRecipe}
-            currentEditModal={currentEditModal}
-            currentViewModal={currentViewModal}
-          />
-        ))}
-      </div>
-      {themeModalActive && (
-        <Modal show onClose={onThemeModalClose} heading="Set Theme">
-          <form noValidate onSubmit={onThemeModalSubmit}>
-            <ModalContent>
-              <h2 id="theme-group-label">Theme</h2>
-              <RadioGroup
-                aria-labelledby="theme-group-label"
-                onChange={onThemeChange}
-                value={currentThemeSelection}
-                name="theme"
-                radios={[
-                  {
-                    id: 'light',
-                    label: 'Light',
-                    value: 'light',
-                  },
-                  {
-                    id: 'dark',
-                    label: 'Dark',
-                    value: 'dark',
-                  },
-                ]}
-              />
-            </ModalContent>
-            <ModalFooter>
-              <Button type="submit">Submit</Button>
-              <Button variant="secondary" onClick={onThemeModalClose}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </form>
-        </Modal>
-      )}
     </Layout>
   </div>
 )
