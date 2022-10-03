@@ -7,14 +7,13 @@ import './RecipeCard.css'
 const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
   <div className="Recipes__card">
     <div className="Recipes__card-head">
-      <div
+      <button
         onClick={() => {
           setCurrentEditModal(recipe.name)
         }}
-        tabIndex={0}
       >
         <img src={pencil} className="edit" alt="Edit" />
-      </div>
+      </button>
       <img src={recipe.image} className="Recipe__image" />
     </div>
     <div className="Recipes__card-content">
