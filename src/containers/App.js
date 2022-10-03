@@ -55,8 +55,6 @@ const App = () => {
     }
   }, [isDarkTheme])
 
-  console.log(themeModalActive)
-
   return (
     <AppComponent
       recipes={recipes}
