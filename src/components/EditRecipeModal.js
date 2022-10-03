@@ -14,10 +14,14 @@ const EditRecipeModal = ({
   ingredients,
   onIngredientDelete,
   onInstructionDelete,
+  ingredientRefs,
+  instructionRefs,
+  ingredientErrors,
+  instructionErrors,
 }) => {
   return (
     <Modal show={show} heading={heading} onClose={onClose}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} noValidate>
         <ModalContent>
           <h3 id="ingredients-heading">Ingredients</h3>
           <div
@@ -31,6 +35,8 @@ const EditRecipeModal = ({
                   required
                   label="Ingredient"
                   defaultValue={ingredient}
+                  error={ingredientErrors[index] ? 'Field required' : null}
+                  ref={(el) => (ingredientRefs.current[index] = el)}
                 />
 
                 <IconButton
@@ -59,6 +65,8 @@ const EditRecipeModal = ({
                   multiline
                   label="Instruction"
                   defaultValue={instruction}
+                  error={instructionErrors[index] ? 'Field required' : null}
+                  ref={(el) => (instructionRefs.current[index] = el)}
                 />
                 <IconButton
                   onClick={() => onInstructionDelete(index)}
@@ -96,5 +104,9 @@ EditRecipeModal.propTypes = {
   ingredients: PropTypes.array.isRequired,
   onIngredientDelete: PropTypes.func.isRequired,
   onInstructionDelete: PropTypes.func.isRequired,
+  ingredientRefs: PropTypes.object.isRequired,
+  instructionRefs: PropTypes.object.isRequired,
+  ingredientErrors: PropTypes.array.isRequired,
+  instructionErrors: PropTypes.array.isRequired,
 }
 export default EditRecipeModal

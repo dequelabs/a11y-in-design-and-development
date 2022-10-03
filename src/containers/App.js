@@ -34,11 +34,9 @@ const App = () => {
   }
 
   const onThemeSwitchClick = () => {
-    console.log('theme trigger clicked')
     setThemeModalActive(!themeModalActive)
   }
   const onThemeModalClose = () => {
-    console.log('close called')
     setThemeModalActive(!themeModalActive)
   }
   const onThemeModalSubmit = (e) => {
