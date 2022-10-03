@@ -78,3 +78,10 @@ h1 span {
 .App .Dialog {
   z-index: 11;
 }
+
+.ThemeSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}

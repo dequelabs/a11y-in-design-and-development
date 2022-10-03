@@ -7,7 +7,11 @@ import {
   TopBar,
   MenuBar,
   TopBarItem,
+  Icon,
+  Button,
+  RadioGroup,
 } from '@deque/cauldron-react'
+import Modal, { ModalContent, ModalFooter } from './Modal'
 import logo from '../img/icons/logo.svg'
 import Stats from './Stats'
 import RecipeCard from '../containers/RecipeCard'
@@ -23,6 +27,12 @@ const App = ({
   setCurrentEditModal,
   setCurrentViewModal,
   updateRecipe,
+  themeModalActive,
+  onThemeSwitchClick,
+  onThemeModalSubmit,
+  onThemeModalClose,
+  currentThemeSelection,
+  onThemeChange,
 }) => (
   <div className="App">
     {!currentEditModal && !currentViewModal && (
@@ -34,6 +44,10 @@ const App = ({
         <TopBarItem>
           <img alt="" role="presentation" src={logo} />
           <span>awesome recipes</span>
+        </TopBarItem>
+        <TopBarItem className="ThemeSwitcher" onClick={onThemeSwitchClick}>
+          <Icon type="sun" />
+          theme
         </TopBarItem>
       </MenuBar>
     </TopBar>
@@ -59,6 +73,39 @@ const App = ({
           />
         ))}
       </div>
+      {themeModalActive && (
+        <Modal show onClose={onThemeModalClose} heading="Set Theme">
+          <form noValidate onSubmit={onThemeModalSubmit}>
+            <ModalContent>
+              <h2 id="theme-group-label">Theme</h2>
+              <RadioGroup
+                aria-labelledby="theme-group-label"
+                onChange={onThemeChange}
+                value={currentThemeSelection}
+                name="theme"
+                radios={[
+                  {
+                    id: 'light',
+                    label: 'Light',
+                    value: 'light',
+                  },
+                  {
+                    id: 'dark',
+                    label: 'Dark',
+                    value: 'dark',
+                  },
+                ]}
+              />
+            </ModalContent>
+            <ModalFooter>
+              <Button type="submit">Submit</Button>
+              <Button variant="secondary" onClick={onThemeModalClose}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </form>
+        </Modal>
+      )}
     </Layout>
   </div>
 )
@@ -71,6 +118,12 @@ App.propTypes = {
   setCurrentEditModal: PropTypes.func.isRequired,
   setCurrentViewModal: PropTypes.func.isRequired,
   updateRecipe: PropTypes.func.isRequired,
+  onThemeSwitchClick: PropTypes.func.isRequired,
+  onThemeModalSubmit: PropTypes.func.isRequired,
+  onThemeModalClose: PropTypes.func.isRequired,
+  currentThemeSelection: PropTypes.string.isRequired,
+  onThemeChange: PropTypes.func.isRequired,
+  themeModalActive: PropTypes.bool.isRequired,
 }
 
 export default App
