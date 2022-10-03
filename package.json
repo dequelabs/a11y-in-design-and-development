@@ -40,8 +40,8 @@
     "@deque/cauldron-react": "4.7.0-canary.ab331638",
     "@deque/cauldron-styles": "4.7.0-canary.ab331638",
     "classnames": "^2.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
