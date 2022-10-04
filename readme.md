@@ -23,7 +23,7 @@ $ npm start
 
 ### Review application
 
-Navigate to `http://localhost:3000`
+Navigate to [http://localhost:3000](http://localhost:3000) or [https://workshop2.dequelabs.com/](https://workshop2.dequelabs.com/)
 
 ### Review codebase
 
@@ -86,6 +86,8 @@ Run the keyboard IGT and review results
 Keep up the good work! We've found quite a few accessibility issues.
 
 ### Fixing accessibility issues and verifying the fixes
+
+> A "fixed" version of our application has been deployed to [https://fixed.d12unv3hg61pve.amplifyapp.com/](https://fixed.d12unv3hg61pve.amplifyapp.com/) (sorry for the funky URL!)
 
 #### Keyboard Issues
 
