@@ -1,7 +1,7 @@
 {
-  "name": "new-smashing-workshop",
+  "name": "a11y-in-design-and-development",
   "version": "1.0.0",
-  "description": "",
+  "description": "Smashing Workshop Day II (10/04/2022)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
