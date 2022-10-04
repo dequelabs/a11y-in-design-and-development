@@ -118,3 +118,11 @@ Keep up the good work! We've found quite a few accessibility issues.
   - `src/components/EditRecipeModal.js`
 - Run Forms IGT on Edit Recipe form
 - Run Forms IGT on Cook Recipe form
+
+#### Structure IGT (if time permits)
+
+Find the accessibility issues, fix them, and validate the fixes!
+
+#### Extra credit: fix the color contrast issue found by automatic scan
+
+**Hint**: the wireframes yesterday included the expected color(s)!
