@@ -49,11 +49,13 @@ const CookRecipeModal = ({
           </ol>
         </div>
         <div className="RecipeModal__global">
-          <div className="Label">Rate the yumminess (0 - 50)</div>
           <TextField
-            label=" "
+            required
+            label="Rate the yumminess (0 - 50)"
             defaultValue={`${recipe.yumminess}`}
-            error={yuminessError ? 'ERROR!' : ''}
+            error={
+              yuminessError ? 'Yumminess must be a number between 0 and 50' : ''
+            }
             type="number"
             min="0"
             max="50"
