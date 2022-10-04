@@ -12,9 +12,9 @@ const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
           setCurrentEditModal(recipe.name)
         }}
       >
-        <img src={pencil} className="edit" alt="Edit" />
+        <img src={pencil} className="edit" alt={`Edit ${recipe.name}`} />
       </button>
-      <img src={recipe.image} className="Recipe__image" />
+      <img src={recipe.image} className="Recipe__image" alt="" />
     </div>
     <div className="Recipes__card-content">
       <div className="Heading">{recipe.name}</div>
@@ -51,6 +51,7 @@ const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
 
 RecipeCard.propTypes = {
   recipe: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
   setCurrentEditModal: PropTypes.func.isRequired,
   setCurrentViewModal: PropTypes.func.isRequired,
 }
