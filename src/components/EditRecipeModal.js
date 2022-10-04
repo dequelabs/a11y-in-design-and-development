@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, IconButton, TextField } from '@deque/cauldron-react'
-import Modal, { ModalContent, ModalFooter } from './Modal'
+import {
+  Button,
+  IconButton,
+  TextField,
+  Modal,
+  ModalContent,
+  ModalFooter,
+} from '@deque/cauldron-react'
 
 const EditRecipeModal = ({
   show,
@@ -32,7 +38,8 @@ const EditRecipeModal = ({
             {ingredients.map((ingredient, index) => (
               <div className="RecipeModalItem" key={`${ingredient}-${index}`}>
                 <TextField
-                  label="Ingredient"
+                  required
+                  label={`Ingredient ${index + 1}`}
                   defaultValue={ingredient}
                   error={ingredientErrors[index] ? 'Field required' : null}
                   ref={(el) => (ingredientRefs.current[index] = el)}
@@ -61,7 +68,8 @@ const EditRecipeModal = ({
               <div className="RecipeModalItem" key={`${instruction}-${index}`}>
                 <TextField
                   multiline
-                  label="Instruction"
+                  required
+                  label={`Instruction ${index + 1}`}
                   defaultValue={instruction}
                   error={instructionErrors[index] ? 'Field required' : null}
                   ref={(el) => (instructionRefs.current[index] = el)}

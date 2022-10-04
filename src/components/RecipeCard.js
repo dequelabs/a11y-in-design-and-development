@@ -7,18 +7,17 @@ import './RecipeCard.css'
 const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
   <div className="Recipes__card">
     <div className="Recipes__card-head">
-      <div
+      <button
         onClick={() => {
           setCurrentEditModal(recipe.name)
         }}
-        tabIndex={0}
       >
-        <img src={pencil} className="edit" alt="Edit" />
-      </div>
-      <img src={recipe.image} className="Recipe__image" />
+        <img src={pencil} className="edit" alt={`Edit ${recipe.name}`} />
+      </button>
+      <img src={recipe.image} className="Recipe__image" alt="" />
     </div>
     <div className="Recipes__card-content">
-      <div className="Heading">{recipe.name}</div>
+      <h2 className="Heading">{recipe.name}</h2>
       <table>
         <tbody>
           <tr>
@@ -52,6 +51,7 @@ const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
 
 RecipeCard.propTypes = {
   recipe: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
   setCurrentEditModal: PropTypes.func.isRequired,
   setCurrentViewModal: PropTypes.func.isRequired,
 }

@@ -10,8 +10,10 @@ import {
   Icon,
   Button,
   RadioGroup,
+  Modal,
+  ModalContent,
+  ModalFooter,
 } from '@deque/cauldron-react'
-import Modal, { ModalContent, ModalFooter } from './Modal'
 import logo from '../img/icons/logo.svg'
 import Stats from './Stats'
 import RecipeCard from '../containers/RecipeCard'

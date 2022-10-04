@@ -13,13 +13,7 @@ const Stats = ({ stats }) => (
         >
           <h2 aria-live="polite" aria-relevant="all" aria-atomic="true">
             <div className="Stat__value">
-              {icon && (
-                <img
-                  className="Stat__value-icon"
-                  src={icon}
-                  alt="decorative icon"
-                />
-              )}
+              {icon && <img className="Stat__value-icon" src={icon} alt="" />}
               {histogram ? (
                 <Histogram data={histogram} />
               ) : (
