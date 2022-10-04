@@ -56,9 +56,7 @@ const App = ({
 
     <Layout>
       <Main id="main-content" aria-labelledby="main-heading" tabIndex={-1}>
-        <h1 id="main-heading">
-          Recipe Dashboard <span>(with intentional a11y issues)</span>
-        </h1>
+        <h1 id="main-heading">Recipe Dashboard</h1>
         <Stats stats={stats} />
         <div className="Recipes">
           {recipes.map((recipe, index) => (
