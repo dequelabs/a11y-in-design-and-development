@@ -50,8 +50,9 @@
   background: #fff;
 }
 
+.Recipes__card-content h2,
 .Recipes__card-content h3 {
-  margin: 10px 0;
+  margin: 0;
 }
 
 .Recipes__card-content .Heading {

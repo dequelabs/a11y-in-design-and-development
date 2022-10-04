@@ -17,7 +17,7 @@ const RecipeCard = ({ recipe, setCurrentEditModal, setCurrentViewModal }) => (
       <img src={recipe.image} className="Recipe__image" alt="" />
     </div>
     <div className="Recipes__card-content">
-      <div className="Heading">{recipe.name}</div>
+      <h2 className="Heading">{recipe.name}</h2>
       <table>
         <tbody>
           <tr>
