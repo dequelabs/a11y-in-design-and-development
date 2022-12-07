@@ -41,6 +41,6 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'build'),
     },
-    port: 3000,
+    port: 3033,
   },
 }

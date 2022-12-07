@@ -1,0 +1,50 @@
+name: axe linter action
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Run axe linter on changed files
+    steps:
+      - uses: actions/checkout@v2
+      - uses: sergeysova/jq-action@v2
+      - name: Get changed html files
+        id: changed-html
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: tj-actions/changed-files@v13.2
+        with:
+          files: |
+            src/*.html
+      - name: Create linter issues comment
+        if: steps.changed-html.outputs.any_changed == 'true'
+        run: |
+          LINTER_RESULTS="# :axe: axe Linter Report :axe:\n\n"
+          for file in ${{ steps.changed-html.outputs.all_changed_and_modified_files }}; do
+            FILE_CONTENTS="$(cat $file)"
+            LINTER_CONFIG=$(
+              jq \
+                --null-input \
+                --arg Source "$FILE_CONTENTS" \
+                --arg Filename "$file" \
+                '{ "source": $Source, "filename": "source.html" }'
+            )
+            FILE_LINT_RESULT="$(curl --request POST --url https://axe-linter.dequelabs.com/lint-source --header 'Content-Type: application/json' --header 'authorization: ${{ secrets.LINTER_API_KEY }}' --data "${LINTER_CONFIG}" | jq '.report.errors')"
+            LINTER_RESULTS="${LINTER_RESULTS}\n* <h2><code>${file}</code> errors:</h2><pre><code>${FILE_LINT_RESULT}</code></pre>"
+          done
+          LINTER_RESULTS=$(echo -e $LINTER_RESULTS)
+          echo "linter_results_comment<<EOF" >> $GITHUB_ENV
+          echo "$LINTER_RESULTS" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      - name: Add linter results comment
+        if: steps.changed-html.outputs.any_changed == 'true'
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: '${{ env.linter_results_comment }}'
+          check_for_duplicate_msg: true
