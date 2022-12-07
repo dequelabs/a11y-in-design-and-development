@@ -19,7 +19,7 @@ jobs:
         uses: tj-actions/changed-files@v13.2
         with:
           files: |
-            src/*.html
+            public/*.html
       - name: Create linter issues comment
         if: steps.changed-html.outputs.any_changed == 'true'
         run: |
